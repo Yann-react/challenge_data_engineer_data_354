@@ -20,3 +20,20 @@ transform_second_station = transform(df_second_station)
 load(transform_first_station, "air_quality", "station_283164601")
 load(transform_second_station, "air_quality", "station_283181971")
 
+
+
+from airflow import DAG
+from datetime import timedelta
+
+dag = DAG(
+    'etl_air_quality',
+    default_args={
+        'owner': 'Yann',
+        'email':'amanikoney@gmail.com',
+        'depends_on_past': False,
+        'start_date': datetime(20223, 1, 1),
+        'retries': 1,
+        'retry_delay': timedelta(minutes=5),
+    },
+    schedule_interval='@hourly',  
+)

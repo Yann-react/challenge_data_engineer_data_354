@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  drill:
+    image: apache/drill:1.21.1
+    container_name: apache_drill
+    ports:
+      - "8047:8047"
+    stdin_open: true
+    command: ["/opt/drill/bin/drill-embedded", "start"]
+    entrypoint: ["/opt/drill/bin/drill-embedded"]
+
+  etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: etl_container
+    volumes:
+      - ./etl_code:/app    # Monter le dossier etl_code dans /app du conteneur
+    depends_on:
+      - mongodb
+      - drill
+    environment:
+      MONGODB_URL: ${MONGODB_URL} #mongodb://mongodb:27017
+      API_URL: ${API_URL} #"https://airqino-api.magentalab.it/v3/getStationHourlyAvg/"
+      FIRST_STATION_ID: ${FIRST_STATION_ID} #"283164601"
+      SECOND_STATION_ID: ${SECOND_STATION_ID} #"283181971"
+    command: ["python", "main.py"]
+
+volumes:
+  mongo_data:

@@ -25,15 +25,15 @@ services:
       dockerfile: Dockerfile
     container_name: etl_container
     volumes:
-      - ./etl_code:/app    # Monter le dossier etl_code dans /app du conteneur
+      - ./etl_code:/app    
     depends_on:
       - mongodb
       - drill
     environment:
-      MONGODB_URL: ${MONGODB_URL} #mongodb://mongodb:27017
-      API_URL: ${API_URL} #"https://airqino-api.magentalab.it/v3/getStationHourlyAvg/"
-      FIRST_STATION_ID: ${FIRST_STATION_ID} #"283164601"
-      SECOND_STATION_ID: ${SECOND_STATION_ID} #"283181971"
+      MONGODB_URL: ${MONGODB_URL} 
+      API_URL: ${API_URL} 
+      FIRST_STATION_ID: ${FIRST_STATION_ID}
+      SECOND_STATION_ID: ${SECOND_STATION_ID} 
     command: ["python", "main.py"]
 
 volumes:

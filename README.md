@@ -6,6 +6,8 @@ Ce projet implémente un processus ETL pour extraire des données de qualité de
 ## Structure du projet
 - `etl/` : les scripts ETL
 - `dashboard/` : le dashboard Superset exporté
+- `docs/` : la reponse aux questions 
+
 
 ## Prérequis
 - Python 3.x

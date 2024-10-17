@@ -3,6 +3,15 @@ import pandas as pd
 # Fonction pour transformer les données extraites
 
 def transform(df_station):
+    """
+    Transforme les données extraites d'une station en calculant la moyenne journalière des colonnes CO et PM2.5.
+
+    Args:
+        df_station (DataFrame): Le DataFrame contenant les données extraites de la station.
+
+    Returns:
+        avg_by_day: Un DataFrame contenant la moyenne journalière des colonnes CO et PM2.5.
+    """
     # Sélectionner les colonnes numériques
     column_num = df_station.select_dtypes(include=['float64', 'int64']).columns
     

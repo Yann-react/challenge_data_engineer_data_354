@@ -1,7 +1,19 @@
 from pymongo import MongoClient
 import logging
 
+#fonction de chargement des données
 def load(df, db_name, collection_name,url):
+    """
+    Charge les données d'un DataFrame dans une collection MongoDB.
+
+    Args:
+        df (DataFrame): Le DataFrame contenant les données à charger.
+        db_name (str): Le nom de la base de données MongoDB.
+        collection_name (str): Le nom de la collection MongoDB.
+        url (str): L'URL de connexion à MongoDB.
+
+    """
+
     # Connexion à MongoDB
     client = MongoClient(url)
     logging.info(f"Connexion a MongoDB sur {url}")

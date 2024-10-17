@@ -83,5 +83,5 @@ Pour la création d'un dashboard, suivez cette documentation :
 [Créer votre premier dashboard](https://superset.apache.org/docs/using-superset/creating-your-first-dashboard)
 
 ## Notre dashboard
-![Capture65](https://github.com/user-attachments/assets/777bdfa4-62af-436b-83b0-1000061a1ed1)
+![Capture66](https://github.com/user-attachments/assets/864d7d4d-1118-425f-8ad0-b9d3887c85f9)
 
